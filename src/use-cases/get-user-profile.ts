@@ -6,7 +6,7 @@ interface GetUserProfileUseCaseRequest {
   userId: string
 }
 
-interface GetUserProfileUseCaseReply {
+interface GetUserProfileUseCaseResponse {
   user: User
 }
 
@@ -15,7 +15,7 @@ export class GetUserProfileUseCase {
 
   async execute({
     userId,
-  }: GetUserProfileUseCaseRequest): Promise<GetUserProfileUseCaseReply> {
+  }: GetUserProfileUseCaseRequest): Promise<GetUserProfileUseCaseResponse> {
     const user = await this.usersRepositoy.findById(userId)
 
     if (!user) {
