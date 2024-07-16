@@ -1,5 +1,4 @@
 import { GymsRepository } from '@/repositories/gyms-repository'
-import { getDistanceBetweenCordinates } from '@/utils/get-distance-between-cordinates'
 import { Gym } from '@prisma/client'
 
 interface FetchNeabyGymsUseCaseRequest {
