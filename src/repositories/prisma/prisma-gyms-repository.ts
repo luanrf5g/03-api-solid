@@ -1,5 +1,5 @@
 import { Gym, Prisma } from '@prisma/client'
-import { FetchManyNeabyParams, GymsRepository } from '../gyms-repository'
+import { FetchManyNearbyParams, GymsRepository } from '../gyms-repository'
 import { prisma } from '@/lib/prisma'
 
 export class PrismaGymsRepository implements GymsRepository {
@@ -27,11 +27,11 @@ export class PrismaGymsRepository implements GymsRepository {
     return gyms
   }
 
-  async fetchManyNeaby({ latitude, longitude }: FetchManyNeabyParams) {
+  async fetchManyNearby({ latitude, longitude }: FetchManyNearbyParams) {
     const gyms = await prisma.$queryRaw<Gym[]>`
-      SELECT * from gyms
-      WHERE ( 6371 * acos( cos( radians(${latitude}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${longitude}) ) + sin( radians(${latitude}) ) * sin( radians( latitude ) ) ) ) <= 10
-    `
+    SELECT * from gyms
+    WHERE ( 6371 * acos( cos( radians(${longitude}) ) * cos( radians( longitude ) ) * cos( radians( latitude ) - radians(${latitude}) ) + sin( radians(${longitude}) ) * sin( radians( longitude ) ) ) ) <= 10
+  `
 
     return gyms
   }

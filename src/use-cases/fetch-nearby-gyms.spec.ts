@@ -1,14 +1,14 @@
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
-import { FetchNeabyGymUseCase } from './fetch-nearby-gyms'
+import { FetchNearbyGymUseCase } from './fetch-nearby-gyms'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 let gymsRepository: InMemoryGymsRepository
-let sut: FetchNeabyGymUseCase
+let sut: FetchNearbyGymUseCase
 
 describe('Fetch Nearby Gyms Use Case', () => {
   beforeEach(async () => {
     gymsRepository = new InMemoryGymsRepository()
-    sut = new FetchNeabyGymUseCase(gymsRepository)
+    sut = new FetchNearbyGymUseCase(gymsRepository)
   })
 
   it('should be able to fetch neraby gyms', async () => {
